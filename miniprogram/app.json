@@ -34,5 +34,5 @@
     "downloadFile": 60000
   },
   "debug":false,
-  "navigateToMiniProgramAppList":["wxe5f52902cf4de896"]
+  "navigateToMiniProgramAppIdList":["wxe5f52902cf4de896"]
 }
