@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/test/test"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -23,6 +24,12 @@
         "text": "日志",
         "iconPath": "./static/icon-tab/log.png",
         "selectedIconPath": "./static/icon-tab/log-selected.png"
+      },
+      {
+        "pagePath": "pages/test/test",
+        "text": "测试",
+        "iconPath": "./static/icon-tab/test.png",
+        "selectedIconPath": "./static/icon-tab/test-selected.png"
       }
     ]
   },
