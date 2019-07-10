@@ -1,6 +1,7 @@
 Page({
   data: {
     msg: 'hello world',
+    loading: false,
     msgList: [
       {
         message: 'foo',
@@ -26,6 +27,11 @@ Page({
         });
       }, 1000)
     });
+    wx.showToast({
+      title: '已发送',
+      icon: 'success',
+      duration: 1500
+    });
   },
   //监听页面显示，触发事件早于onReady
   onShow() { },
@@ -41,9 +47,13 @@ Page({
   },
 
   //页面相关事件处理函数--监听用户下拉动作
-  onPullDownRefresh() { },
+  onPullDownRefresh() {
+    console.log('用户触发了下拉刷新操作');
+  },
   //页面上拉触底事件的处理函数
-  onReachBottom() { },
+  onReachBottom() {
+    console.log('界面下方距离页面底部小于100像素liao');
+  },
   //用户点击右上角转发
   onShareAppMessage() {
     return {
@@ -72,8 +82,13 @@ Page({
     //   }
     // });
     wx.showModal({
-      title:'提示',
-      content:'这是一个模态框'
+      title: '提示',
+      content: '这是一个模态框'
     });
-  }
+  },
+  handleBtnTap() {
+    this.setData({
+      loading: true
+    });
+  },
 });

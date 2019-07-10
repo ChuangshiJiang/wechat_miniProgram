@@ -15,4 +15,11 @@
   <block wx:for="{{[1,2,3,4,5]}}" wx:key="item">
     <template is="{{item % 2 == 0?'even':'odd'}}"/>
   </block>
+  <block wx:for="{{[1,2,3,4,5]}}" wx:key="item">
+    <template is="{{item % 2 == 0?'even':'odd'}}"/>
+  </block>
+  <block wx:for="{{[1,2,3,4,5]}}" wx:key="item">
+    <template is="{{item % 2 == 0?'even':'odd'}}"/>
+  </block>
+  <button loading="{{loading}}" bindtap="handleBtnTap">la la land</button>
 </view>
