@@ -7,7 +7,7 @@
 
 <view class="container">
   <block>
-    <text>{{msg}}</text>
+    <text bindtap="naviagteToHome">{{msg}}</text>
   </block>
   <text wx:for="{{msgList}}" wx:key="id">
     {{item.id}}:{{item.message}}

@@ -8,7 +8,8 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "selectedColor": "#1296db",
@@ -40,6 +41,8 @@
     "uploadFile": 60000,
     "downloadFile": 60000
   },
-  "debug":false,
-  "navigateToMiniProgramAppIdList":["wxe5f52902cf4de896"]
+  "debug": false,
+  "navigateToMiniProgramAppIdList": [
+    "wxe5f52902cf4de896"
+  ]
 }
