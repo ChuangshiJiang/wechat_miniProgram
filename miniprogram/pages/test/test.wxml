@@ -22,4 +22,6 @@
     <template is="{{item % 2 == 0?'even':'odd'}}"/>
   </block>
   <button loading="{{loading}}" bindtap="handleBtnTap">la la land</button>
+  <button bindtap="qrCodeScan">扫码</button>
+  <button bindtap="tabToGetNetworkType">获取网络类型</button>
 </view>

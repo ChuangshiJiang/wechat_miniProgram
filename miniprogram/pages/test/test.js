@@ -18,16 +18,14 @@ Page({
     //监听页面加载，触发时机早于onShow和onReady
     onLoad: function () {
         var _this = this;
-        this.setData({
-            timer: setTimeout(function () {
-                _this.setData({
-                    msg: 'hello master'
-                }, function () {
-                    //在这次setData对界面渲染完毕后触发
-                    console.log('数据修改完成，页面渲染成功');
-                });
-            }, 1000)
-        });
+        setTimeout(function () {
+            _this.setData({
+                msg: 'hello master'
+            }, function () {
+                //在这次setData对界面渲染完毕后触发
+                console.log('数据修改完成，页面渲染成功');
+            });
+        }, 1000);
         wx.showToast({
             title: '已发送',
             icon: 'success',
@@ -44,7 +42,6 @@ Page({
     //当前页面使用wx.redirectTo或wx.navigateBack返回到其他页时，
     //当前页面会被微信客户端销毁回收，此时Page构造器参数所定义的onUnload方法会被调用。
     onUnload: function () {
-        clearTimeout(this.timer);
     },
     //页面相关事件处理函数--监听用户下拉动作
     onPullDownRefresh: function () {
@@ -63,6 +60,7 @@ Page({
     },
     //页面滚动触发事件的处理函数
     onPageScroll: function () { },
+    //导航到首页
     naviagteToHome: function (event) {
         wx.switchTab({ url: '/pages/index/index' });
         console.log(event);
@@ -86,9 +84,25 @@ Page({
             content: '这是一个模态框'
         });
     },
+    //按钮点击
     handleBtnTap: function () {
         this.setData({
             loading: true
+        });
+    },
+    qrCodeScan: function () {
+        wx.scanCode({
+            success: function (res) {
+                var num = res.result;
+                console.log(num);
+            }
+        });
+    },
+    tabToGetNetworkType: function () {
+        wx.getNetworkType({
+            success: function (res) {
+                console.log(res);
+            }
         });
     }
 });

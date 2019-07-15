@@ -17,16 +17,14 @@ Page({
   //Page实例的5个生命周期函数
   //监听页面加载，触发时机早于onShow和onReady
   onLoad() {
-    this.setData({
-      timer: setTimeout(() => {
-        this.setData({
-          msg: 'hello master'
-        }, () => {
-          //在这次setData对界面渲染完毕后触发
-          console.log('数据修改完成，页面渲染成功');
-        });
-      }, 1000)
-    });
+    setTimeout(() => {
+      this.setData({
+        msg: 'hello master'
+      }, () => {
+        //在这次setData对界面渲染完毕后触发
+        console.log('数据修改完成，页面渲染成功');
+      });
+    }, 1000)
     wx.showToast({
       title: '已发送',
       icon: 'success',
@@ -43,7 +41,7 @@ Page({
   //当前页面使用wx.redirectTo或wx.navigateBack返回到其他页时，
   //当前页面会被微信客户端销毁回收，此时Page构造器参数所定义的onUnload方法会被调用。
   onUnload() {
-    clearTimeout(this.timer);
+
   },
 
   //页面相关事件处理函数--监听用户下拉动作
@@ -63,6 +61,7 @@ Page({
   },
   //页面滚动触发事件的处理函数
   onPageScroll() { },
+  //导航到首页
   naviagteToHome(event: any) {
     wx.switchTab({ url: '/pages/index/index' });
     console.log(event);
@@ -86,9 +85,40 @@ Page({
       content: '这是一个模态框'
     });
   },
+  //按钮点击
   handleBtnTap() {
     this.setData({
       loading: true
     });
   },
+  qrCodeScan() {
+    wx.scanCode({
+      success: (res) => {
+        let num = res.result;
+        console.log(num);
+      }
+    });
+  },
+  tabToGetNetworkType() {
+    wx.getNetworkType({
+      success: (res) => {
+        console.log(res);
+        if (res.networkType === 'wifi') {
+          wx.downloadFile({
+            url: 'https://test.com/somefile.pdf',
+            success: (res) => {
+              //下载成功后进行预览文档
+              wx.openDocument({
+                filePath: res.tempFilePath
+              });
+            }
+          });
+        }else{
+          wx.showToast({
+            title:'当前为飞wifi网络'
+          });
+        }
+      }
+    });
+  }
 });
