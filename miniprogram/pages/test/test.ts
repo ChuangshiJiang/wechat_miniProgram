@@ -30,6 +30,27 @@ Page({
       icon: 'success',
       duration: 1500
     });
+    let info = wx.getSystemInfoSync();
+    console.log('小程序的基础版本为：',info.SDKVersion);
+
+    // //通过useragent获取开发者工具websocket服务器监听的端口
+    // let port = window.navigator.userAgent.match(/port\/(\d*)/)[1];
+    // //通过指定 protocol === 'APPSERVIC' 告知开发者工具这个链接来自逻辑层
+    // let ws = new WebSocket(`ws://127.0.0.1:${port}`,'APPSERVICE');
+    // ws.onmessage = (event)=>{
+    //   let message = JSON.parse(event.data);
+    //   //处理来自开发者的信息
+    //   console.log(message);
+    // }
+
+    // //调用api接口 wx.navigateBack
+    // ws.send(JSON.stringify({
+    //   command:'APPSERVICE_INVOKE',
+    //   data:{
+    //     api:'navigateBack',
+    //     args:{}
+    //   }
+    // }));
   },
   //监听页面显示，触发事件早于onReady
   onShow() { },
