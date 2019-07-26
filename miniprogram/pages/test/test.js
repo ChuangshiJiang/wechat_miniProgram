@@ -33,23 +33,23 @@ Page({
         });
         var info = wx.getSystemInfoSync();
         console.log('小程序的基础版本为：', info.SDKVersion);
-        //通过useragent获取开发者工具websocket服务器监听的端口
-        var port = window.navigator.userAgent.match(/port\/(\d*)/)[1];
-        //通过指定 protocol === 'APPSERVIC' 告知开发者工具这个链接来自逻辑层
-        var ws = new WebSocket("ws://127.0.0.1:" + port, 'APPSERVICE');
-        ws.onmessage = function (event) {
-            var message = JSON.parse(event.data);
-            //处理来自开发者的信息
-            console.log(message);
-        };
-        //调用api接口 wx.navigateBack
-        ws.send(JSON.stringify({
-            command: 'APPSERVICE_INVOKE',
-            data: {
-                api: 'navigateBack',
-                args: {}
-            }
-        }));
+        // //通过useragent获取开发者工具websocket服务器监听的端口
+        // let port = window.navigator.userAgent.match(/port\/(\d*)/)[1];
+        // //通过指定 protocol === 'APPSERVIC' 告知开发者工具这个链接来自逻辑层
+        // let ws = new WebSocket(`ws://127.0.0.1:${port}`,'APPSERVICE');
+        // ws.onmessage = (event)=>{
+        //   let message = JSON.parse(event.data);
+        //   //处理来自开发者的信息
+        //   console.log(message);
+        // }
+        // //调用api接口 wx.navigateBack
+        // ws.send(JSON.stringify({
+        //   command:'APPSERVICE_INVOKE',
+        //   data:{
+        //     api:'navigateBack',
+        //     args:{}
+        //   }
+        // }));
     },
     //监听页面显示，触发事件早于onReady
     onShow: function () { },
@@ -83,21 +83,21 @@ Page({
     naviagteToHome: function (event) {
         wx.switchTab({ url: '/pages/index/index' });
         console.log(event);
-        // wx.request({
-        //   url: 'https://www.pangbing.top',
-        //   data: {},
-        //   header: { 'content-type': 'application/json' },
-        //   success(res) {
-        //     //收到https服务成功后返回
-        //     console.log(res.data);
-        //   },
-        //   fail() {
-        //     // 发生网络错误等情况触发
-        //   },
-        //   complete() {
-        //     // 成功或者失败后触发
-        //   }
-        // });
+        wx.request({
+            url: 'https://www.pangbing.top/users',
+            data: {},
+            header: { 'content-type': 'application/json' },
+            success: function (res) {
+                //收到https服务成功后返回
+                console.log('网络请求返回：', res);
+            },
+            fail: function () {
+                // 发生网络错误等情况触发
+            },
+            complete: function () {
+                // 成功或者失败后触发
+            }
+        });
         wx.showModal({
             title: '提示',
             content: '这是一个模态框'
@@ -134,7 +134,7 @@ Page({
                 }
                 else {
                     wx.showToast({
-                        title: '当前为飞wifi网络'
+                        title: '当前为非wifi网络'
                     });
                 }
             }

@@ -86,21 +86,21 @@ Page({
   naviagteToHome(event: any) {
     wx.switchTab({ url: '/pages/index/index' });
     console.log(event);
-    // wx.request({
-    //   url: 'https://www.pangbing.top',
-    //   data: {},
-    //   header: { 'content-type': 'application/json' },
-    //   success(res) {
-    //     //收到https服务成功后返回
-    //     console.log(res.data);
-    //   },
-    //   fail() {
-    //     // 发生网络错误等情况触发
-    //   },
-    //   complete() {
-    //     // 成功或者失败后触发
-    //   }
-    // });
+    wx.request({
+      url: 'https://www.pangbing.top/users',
+      data: {},
+      header: { 'content-type': 'application/json' },
+      success(res) {
+        //收到https服务成功后返回
+        console.log('网络请求返回：',res);
+      },
+      fail() {
+        // 发生网络错误等情况触发
+      },
+      complete() {
+        // 成功或者失败后触发
+      }
+    });
     wx.showModal({
       title: '提示',
       content: '这是一个模态框'
@@ -136,7 +136,7 @@ Page({
           });
         }else{
           wx.showToast({
-            title:'当前为飞wifi网络'
+            title:'当前为非wifi网络'
           });
         }
       }
