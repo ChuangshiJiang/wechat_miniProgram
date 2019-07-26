@@ -31,7 +31,7 @@ Page({
       duration: 1500
     });
     let info = wx.getSystemInfoSync();
-    console.log('小程序的基础版本为：',info.SDKVersion);
+    console.log('小程序的基础版本为：', info.SDKVersion);
 
     // //通过useragent获取开发者工具websocket服务器监听的端口
     // let port = window.navigator.userAgent.match(/port\/(\d*)/)[1];
@@ -84,15 +84,28 @@ Page({
   onPageScroll() { },
   //导航到首页
   naviagteToHome(event: any) {
-    wx.switchTab({ url: '/pages/index/index' });
-    console.log(event);
+    let _this = this;
     wx.request({
       url: 'https://www.pangbing.top/users',
       data: {},
       header: { 'content-type': 'application/json' },
       success(res) {
         //收到https服务成功后返回
-        console.log('网络请求返回：',res);
+        console.log('网络请求返回：', res.data);
+        if (res.data) {
+          _this.setData({
+            msgList: res.data
+          });
+        } else {
+          wx.showModal({
+            title: '提示',
+            content: '这是一个模态框',
+            success() {
+              wx.switchTab({ url: '/pages/index/index' });
+            }
+          });
+        }
+
       },
       fail() {
         // 发生网络错误等情况触发
@@ -101,10 +114,7 @@ Page({
         // 成功或者失败后触发
       }
     });
-    wx.showModal({
-      title: '提示',
-      content: '这是一个模态框'
-    });
+
   },
   //按钮点击
   handleBtnTap() {
@@ -134,9 +144,9 @@ Page({
               });
             }
           });
-        }else{
+        } else {
           wx.showToast({
-            title:'当前为非wifi网络'
+            title: '当前为非wifi网络'
           });
         }
       }

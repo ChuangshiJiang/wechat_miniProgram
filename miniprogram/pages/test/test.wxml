@@ -7,10 +7,11 @@
 
 <view class="container">
   <block>
-    <text bindtap="naviagteToHome">{{msg}}</text>
+    <button bindtap="naviagteToHome">调用接口获取记录</button>
   </block>
-  <text wx:for="{{msgList}}" wx:key="id">
-    {{item.id}}:{{item.message}}
+  <text wx:for="{{msgList}}" wx:key="id" class="message">
+    <text class="name">{{item.id}}</text>
+    <text class="content">{{item.message}}</text>
   </text>
   <block wx:for="{{[1,2,3,4,5]}}" wx:key="item">
     <template is="{{item % 2 == 0?'even':'odd'}}"/>

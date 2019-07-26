@@ -17,9 +17,9 @@ Page({
     //Page实例的5个生命周期函数
     //监听页面加载，触发时机早于onShow和onReady
     onLoad: function () {
-        var _this = this;
+        var _this_1 = this;
         setTimeout(function () {
-            _this.setData({
+            _this_1.setData({
                 msg: 'hello master'
             }, function () {
                 //在这次setData对界面渲染完毕后触发
@@ -81,15 +81,28 @@ Page({
     onPageScroll: function () { },
     //导航到首页
     naviagteToHome: function (event) {
-        wx.switchTab({ url: '/pages/index/index' });
-        console.log(event);
+        var _this = this;
         wx.request({
             url: 'https://www.pangbing.top/users',
             data: {},
             header: { 'content-type': 'application/json' },
             success: function (res) {
                 //收到https服务成功后返回
-                console.log('网络请求返回：', res);
+                console.log('网络请求返回：', res.data);
+                if (res.data) {
+                    _this.setData({
+                        msgList: res.data
+                    });
+                }
+                else {
+                    wx.showModal({
+                        title: '提示',
+                        content: '这是一个模态框',
+                        success: function () {
+                            wx.switchTab({ url: '/pages/index/index' });
+                        }
+                    });
+                }
             },
             fail: function () {
                 // 发生网络错误等情况触发
@@ -97,10 +110,6 @@ Page({
             complete: function () {
                 // 成功或者失败后触发
             }
-        });
-        wx.showModal({
-            title: '提示',
-            content: '这是一个模态框'
         });
     },
     //按钮点击
