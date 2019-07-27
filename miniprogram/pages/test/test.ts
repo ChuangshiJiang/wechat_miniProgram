@@ -13,14 +13,12 @@ Page({
       }
     ],
     timer: null,
-    imgSrc:'',//网络图片地址
-    inputVal:'',//输入框的值
   },
   //Page实例的5个生命周期函数
   //监听页面加载，触发时机早于onShow和onReady
   onLoad() {
     setTimeout(() => {
-      this.setData({
+      this.setData!({
         msg: 'hello master',
       }, () => {
         //在这次setData对界面渲染完毕后触发
@@ -89,46 +87,6 @@ Page({
   },
   //页面滚动触发事件的处理函数
   onPageScroll() { },
-  //导航到首页
-  naviagteToHome(event: any) {
-    let _this = this;
-    wx.request({
-      url: 'https://www.pangbing.top/users',
-      data: {},
-      header: { 'content-type': 'application/json' },
-      success(res) {
-        //收到https服务成功后返回
-        console.log('网络请求返回：', res.data);
-        if (res.data) {
-          _this.setData({
-            msgList: res.data
-          });
-        } else {
-          wx.showModal({
-            title: '提示',
-            content: '这是一个模态框',
-            success() {
-              wx.switchTab({ url: '/pages/index/index' });
-            }
-          });
-        }
-
-      },
-      fail() {
-        // 发生网络错误等情况触发
-      },
-      complete() {
-        // 成功或者失败后触发
-      }
-    });
-
-  },
-  //按钮点击
-  handleBtnTap() {
-    this.setData({
-      loading: true
-    });
-  },
   qrCodeScan() {
     wx.scanCode({
       success: (res) => {
@@ -157,12 +115,6 @@ Page({
           });
         }
       }
-    });
-  },
-  handleInput(inputVal){
-    this.setData({
-      inputVal:inputVal.detail.value,
-      imgSrc: inputVal.detail.value,
     });
   }
 });

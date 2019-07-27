@@ -5,20 +5,7 @@
   <view>even</view>
 </template>
 
-<template name="networkImgs">
-  <view class="networkImgs">
-    <input placeholder="输入在线图片地址" bindinput="handleInput" value="{{inputVal}}"></input>
-  </view>
-  <image src="{{imgSrc}}"></image>
-</template>
-
 <view class="container">
-  <block>
-    <template is="networkImgs"/>
-  </block>
-  <block>
-    <button bindtap="naviagteToHome">调用接口获取记录</button>
-  </block>
   <text wx:for="{{msgList}}" wx:key="id" class="message">
     <text class="name">{{item.id}}</text>
     <text class="content">{{item.message}}</text>

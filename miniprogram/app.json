@@ -23,13 +23,13 @@
       },
       {
         "pagePath": "pages/logs/logs",
-        "text": "日志",
+        "text": "图片和接口",
         "iconPath": "./static/icon-tab/log.png",
         "selectedIconPath": "./static/icon-tab/log-selected.png"
       },
       {
         "pagePath": "pages/test/test",
-        "text": "测试",
+        "text": "上传和下载",
         "iconPath": "./static/icon-tab/test.png",
         "selectedIconPath": "./static/icon-tab/test-selected.png"
       }
