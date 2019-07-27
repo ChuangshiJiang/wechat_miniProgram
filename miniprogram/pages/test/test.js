@@ -12,7 +12,9 @@ Page({
                 id: 2
             }
         ],
-        timer: null
+        timer: null,
+        imgSrc: '',
+        inputVal: ''
     },
     //Page实例的5个生命周期函数
     //监听页面加载，触发时机早于onShow和onReady
@@ -54,7 +56,12 @@ Page({
     //监听页面显示，触发事件早于onReady
     onShow: function () { },
     //监听页面初次渲染完成
-    onReady: function () { },
+    onReady: function () {
+        this.setData({
+            // imgSrc:'http://bddn.cn/pics/akyk.jpg',
+            imgSrc: 'https://www.baidu.com/img/bd_logo1.png'
+        });
+    },
     //监听页面隐藏
     onHide: function () { },
     //监听页面卸载
@@ -147,6 +154,12 @@ Page({
                     });
                 }
             }
+        });
+    },
+    handleInput: function (inputVal) {
+        this.setData({
+            inputVal: inputVal.detail.value,
+            imgSrc: inputVal.detail.value
         });
     }
 });

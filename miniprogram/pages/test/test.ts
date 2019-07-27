@@ -12,14 +12,16 @@ Page({
         id: 2
       }
     ],
-    timer: null
+    timer: null,
+    imgSrc:'',//网络图片地址
+    inputVal:'',//输入框的值
   },
   //Page实例的5个生命周期函数
   //监听页面加载，触发时机早于onShow和onReady
   onLoad() {
     setTimeout(() => {
       this.setData({
-        msg: 'hello master'
+        msg: 'hello master',
       }, () => {
         //在这次setData对界面渲染完毕后触发
         console.log('数据修改完成，页面渲染成功');
@@ -55,7 +57,12 @@ Page({
   //监听页面显示，触发事件早于onReady
   onShow() { },
   //监听页面初次渲染完成
-  onReady() { },
+  onReady() { 
+    this.setData({
+      // imgSrc:'http://bddn.cn/pics/akyk.jpg',
+      imgSrc: 'https://www.baidu.com/img/bd_logo1.png'
+  });
+  },
   //监听页面隐藏
   onHide() { },
   //监听页面卸载
@@ -150,6 +157,12 @@ Page({
           });
         }
       }
+    });
+  },
+  handleInput(inputVal){
+    this.setData({
+      inputVal:inputVal.detail.value,
+      imgSrc: inputVal.detail.value,
     });
   }
 });

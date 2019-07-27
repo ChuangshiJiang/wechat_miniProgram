@@ -1,14 +1,31 @@
-.message{
+.container {
+  align-items: flex-start;
+  padding: 200rpx 20rpx;
+}
+
+.networkImgs input,
+.networkImgs button {
+  display: inline-block;
+}
+
+.networkImgs button {
+  width: 150rpx;
+  height: 50rpx;
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+.message {
   text-align: left;
   width: 100%;
   padding: 10rpx;
 }
 
-.message .name{
+.message .name {
   width: 50rpx;
   text-align: right;
 }
 
-.message .content{
+.message .content {
   text-align: left;
 }
