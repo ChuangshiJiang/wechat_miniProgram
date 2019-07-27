@@ -6,6 +6,7 @@ Page({
     logs: [] as string[],
     imgSrc: '',//网络图片地址
     inputVal: '',//输入框的值
+    msgList: [],//消息列表
   },
   onLoad() {
     this.setData!({
@@ -24,9 +25,10 @@ Page({
   },
   //导航到首页
   naviagteToHome() {
+    console.log('调用接口');
     let _this = this;
     wx.request({
-      url: 'https://www.pangbing.top/users',
+      url: 'https://www.pangbing.top/msgList',
       data: {},
       header: { 'content-type': 'application/json' },
       success(res) {

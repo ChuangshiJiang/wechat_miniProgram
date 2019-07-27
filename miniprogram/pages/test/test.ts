@@ -56,7 +56,7 @@ Page({
   onShow() { },
   //监听页面初次渲染完成
   onReady() { 
-    this.setData({
+    this.setData!({
       // imgSrc:'http://bddn.cn/pics/akyk.jpg',
       imgSrc: 'https://www.baidu.com/img/bd_logo1.png'
   });

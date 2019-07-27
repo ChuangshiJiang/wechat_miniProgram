@@ -6,6 +6,40 @@ export interface IMyApp {
   }
 }
 
+import Mock from './utils/WxMock.js';
+
+Mock.mock('https://www.pangbing.top/msgList', {
+  "code": 200,
+  "data": [
+    {
+      from: 'jack',
+      to: 'tom',
+      message: 'hello tom'
+    },
+    {
+      from: 'tom',
+      to: 'jack',
+      message: 'hello jack'
+    },
+    {
+      from: 'tom',
+      to: 'jack',
+      message: 'where are you now?'
+    },
+    {
+      from: 'jack',
+      to: 'tom',
+      message: 'I am in Calofonia'
+    },
+  ]
+})
+
+Mock.mock('https://xxx.com/user/delete', {
+  "code": 200,
+  "message": "s删除成功"
+})
+
+
 App<IMyApp>({
   onLaunch() {
     // 展示本地存储能力
